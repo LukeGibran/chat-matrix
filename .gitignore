@@ -14,7 +14,7 @@ Client/.pnp
 Client.pnp.js
 
 # build files
-Client/dist
+#Client/dist
 
 # misc
 Client/.DS_Store
