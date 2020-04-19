@@ -1,0 +1,28 @@
+div(id="chatRoom" class="h-100 d-none")
+
+    div(id="statusText" class="position-absolute w-100 h-100 d-none")
+        div(class="d-flex flex-column justify-content-center align-items-center w-100 h-100")
+            p(class="lead") Connecting...
+
+    div(class="video-container h-100")
+        video(id="remoteVideo" autoplay playsinline class="bg-dark invisible") Your browser does not support the video tag.
+
+    div(id="localVideoContainer" class="video-container ml-2 mb-2")
+        video(id="localVideo" autoplay playsinline muted class="bg-secondary invisible") Your browser does not support the video tag.
+
+    div(id="customerName" class="position-absolute text-center text-light pt-1 invisible")
+        h2 Wendy
+
+    div(id="bottomInfo" class="position-absolute d-block text-light px-2 invisible")
+        h4(id="vipUsername" class="mb-1")
+        h2(class="mb-0")
+            b thechatmatrix.com
+
+    div(id="tipAlert" class="position-absolute w-100 h-100 d-none")
+        div(class="d-flex flex-column justify-content-center align-items-center h-100")
+            div(class="alert alert-light text-center text-dark")
+                strong Please use headphones to prevent echoing.
+
+    div(id="back" class="icon-back position-absolute px-3 py-2 mt-3 mr-3 invisible")
+
+    div(id="report" class="position-absolute icon-report-lg mt-3 ml-3 invisible")

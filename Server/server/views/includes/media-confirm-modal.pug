@@ -1,0 +1,22 @@
+div(class="modal fade" id="mediaConfirmModal" tabindex="-1" role="dialog")
+    div(class="modal-dialog modal-dialog-centered" role="document")
+        div(class="modal-content")
+
+            div(class="modal-header")
+                p(class="lead modal-title")
+                    strong This is how other people will see you.
+                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                    span(aria-hidden="true") &times;
+
+            div(class="modal-body")
+                div(class="d-flex justify-content-center mb-3")
+                    button(id="continueBtn" type="button" class="btn btn-primary mr-3") Continue
+                    button(type="button" class="btn btn-danger" data-dismiss="modal") Cancel
+
+                div(class="bg-dark")
+                    canvas(width=480 height=360)
+
+                    div(id="message" class="d-none align-items-center justify-content-center text-danger text-center")
+                        h4 Face not detected
+
+                p(class="mb-0 mt-2 text-justify") Please use headphones. If you cannot hear your voice (right now) from your speakers, this means your microphone is currently inactive, and nobody will be able to hear you during a Video Call.

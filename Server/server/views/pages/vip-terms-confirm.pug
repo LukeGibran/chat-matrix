@@ -1,0 +1,20 @@
+extends layout
+
+block content
+    div(class="d-flex justify-content-center align-items-center h-100")
+        div(class="card mb-5")
+            div(class="card-body")
+                p(class="card-text text-center") Do you completely understand and completely agree with all of the content in the links <a href="/sofi" target="_blank">here</a>, <a href="/privacy-policy" target="_blank">here</a> and <a href="/l/links/vip-terms-and-conditions" target="_blank">here</a>?
+
+                div(class="d-flex justify-content-center")
+                    a(href="/v/vip/stripe_create_confirm" class="btn btn-success mr-3") Yes
+                    a(href="#" class="btn btn-danger") No
+
+append scripts
+    script.
+        $('a.btn-danger').on('click', function(event) {
+            event.preventDefault();
+
+            window.open('https://instagram.com/accounts/logout/', "_blank");
+            window.location.href = '/v/vip/logout';
+        });

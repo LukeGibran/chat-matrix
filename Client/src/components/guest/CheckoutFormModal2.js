@@ -1,0 +1,220 @@
+import React, {Component, Fragment} from 'react';
+import { Modal } from 'react-bootstrap';
+import PropTypes from 'prop-types';
+import {
+  CardElement,
+  injectStripe,
+  StripeProvider,
+  Elements
+} from 'react-stripe-elements';
+import busy from '../common/busy';
+import utils from '../common/utils';
+
+const backdropStyle = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    backgroundColor: '#000',
+    opacity: 0.5,
+    zIndex: 1040
+};
+
+const modalRootStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
+    width: '100%',
+    height: '100%',
+    zIndex: 1040
+};
+// You can customize your Elements to give it the look and feel of your site.
+const createOptions = () => {
+  return {
+    style: {
+      base: {
+        width: '100%',
+        fontSize: '16px',
+        color: '#424770',
+        letterSpacing: '0.025em',
+        '::placeholder': {
+          color: '#aab7c4',
+        },
+      },
+      invalid: {
+        color: '#c23d4b',
+      },
+    },
+  };
+};
+
+class _CardForm extends Component {
+  state = {
+    errorMessage: '',
+  };
+
+  handleChange = ({error}) => {
+    if (error) {
+      this.setState({errorMessage: error.message});
+    }
+  };
+
+  handleReady = () => {
+    console.log('[ready]');
+  };
+
+  handleSubmit = (evt) => {
+    evt.preventDefault();
+    if (this.props.stripe) {
+      this.props.stripe.createToken().then(token => this.props.onSubmit(token));
+    } else {
+      console.log("Stripe.js hasn't loaded yet.");
+    }
+  };
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit.bind(this)}>
+          <label>
+            Card details
+            {this.props.countdown > 0 ? (
+              <span>
+                Loading Stripe in {this.props.countdown}...
+              </span>
+            ) : (
+              ''
+            )}
+            {this.props.stripe ? (
+              <CardElement
+                onReady={this.handleReady}
+                onChange={this.handleChange}
+                {...createOptions()}
+              />
+            ) : (
+              <div className="StripeElement loading" />
+            )}
+          </label>
+          <div className="error" role="alert">
+            {this.state.errorMessage}
+          </div>
+          <button disabled={!this.props.stripe}>Pay</button>
+        </form>
+      </div>
+    );
+  }
+}
+
+const CardForm = injectStripe(_CardForm);
+
+class CheckoutFormModal extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      stripe: null,
+      countdown: 3,
+    };
+    this.modalDialog = React.createRef();
+    this._modalStyle = {
+      position: 'absolute',
+            width: '30rem',
+            margin: 0,
+            top: 0,
+            left: 0,
+            opacity: 0
+    };
+  }
+
+  componentDidMount() {
+    // componentDidMount only runs in a browser environment.
+    // In addition to loading asynchronously, this code is safe to server-side render.
+
+    // Remove our existing Stripe script to keep the DOM clean.
+    document.getElementById('stripe-script').remove();
+    // You can inject a script tag manually like this,
+    // or you can use the 'async' attribute on the Stripe.js v3 <script> tag.
+    const stripeJs = document.createElement('script');
+    stripeJs.id = 'stripe-script';
+    stripeJs.src = 'https://js.stripe.com/v3/';
+    stripeJs.async = true;
+    stripeJs.onload = () => {
+      const countdown = setInterval(() => {
+        this.setState({countdown: this.state.countdown - 1});
+      }, 1000);
+      // The setTimeout lets us pretend that Stripe.js took a long time to load
+      // Take it out of your production code!
+      setTimeout(() => {
+        clearInterval(countdown);
+        this.setState({
+          stripe: window.Stripe('pk_test_azxA1GycgDWVt9rluN6gRzx100dRcNDIz6')
+        });
+      }, 3000);
+    };
+    document.body && document.body.appendChild(stripeJs);
+    this.calculateModalPosition();
+  }
+
+  calculateModalPosition() {
+    const modalDialog = this.modalDialog.current;
+    const top = (modalDialog.offsetHeight > window.innerHeight ?
+        0 : (window.innerHeight - modalDialog.offsetHeight) / 2);
+    if (modalDialog) {
+        this._modalStyle = {
+            position: 'absolute',
+                width: '30rem',
+                margin: 'auto',
+                top: top,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                opacity: 1
+        };
+
+        this.forceUpdate();
+    }
+  }
+
+  render() {
+    const { onCancel } = this.props;
+    return (
+      <Fragment>
+        <div style={backdropStyle} />
+  
+        <div style={modalRootStyle}>
+          <Modal.Dialog
+            ref={this.modalDialog}
+            className="px-1"
+            style={this._modalStyle}>
+            <Modal.Header
+              closeButton
+              onHide={onCancel}>
+              <Modal.Title>Pay with Card <a href="/payment-info">{'\u24D8'}</a></Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <StripeProvider stripe={this.state.stripe}>
+                  <Elements>
+                    <CardForm
+                      countdown={this.state.countdown}   
+                    />
+                  </Elements>
+                </StripeProvider>
+            </Modal.Body>
+          </Modal.Dialog>
+        </div>
+      </Fragment>
+    );
+  }
+}
+
+CheckoutFormModal.propTypes = {
+    details: PropTypes.object,
+    // show: PropTypes.bool,
+    onSubmit: PropTypes.func,
+    onCancel: PropTypes.func
+};
+
+export default CheckoutFormModal;

@@ -1,0 +1,16 @@
+extends layout
+
+block content
+     div(class="d-flex justify-content-center align-items-center h-100")
+        div(class="card")
+            div(class="card-body")
+                p(class="card-text text-center text-danger")
+                    strong Sorry, you do not have enough influence to be a VIP yet.
+
+append scripts
+    script.
+        $(function() {
+            setTimeout(function() {
+                window.location.href = '/';
+            }, 2000);
+        });

@@ -1,0 +1,65 @@
+extends layout
+
+append head
+    link(rel="stylesheet" href="/styles/chat.css")
+    link(rel="stylesheet" href="/styles/dashboard.css")
+
+block content
+    div(id="dashboard" class="w-100 h-100 d-none")
+        nav(class="navbar navbar-expand-lg navbar-light bg-light fixed-top")
+            div(class="dashboard-title m-0 text-secondary")= title
+
+            btn(id="logOutBtn" class="btn btn-danger ml-auto") Log Out
+        
+        div(class="d-flex flex-column align-items-center text-center py-5 mx-2 mx-md-5")
+            div(class="pt-4 my-3")
+                p(class="lead m-0")
+                    strong Hi #{fullname}!
+            
+            div(id="noWaiting" class="my-3")
+                p(class="m-0")
+                    small Nobody is waiting to do a video call with you at the moment. When, at least, one person is waiting to do a video call with you, a green "Do Video Calls now" button will appear here.
+
+            div(id="hasWaiting" class="mb-3 d-none")
+                p(class="m-0")
+                    small This is how you will look when you do video calls:
+                div(class="video-container d-flex flex-column justify-content-center align-items-center bg-dark mx-auto mt-1 mb-2")
+                    video(autoplay playsinline width="240" height="180")
+                button(id="startVideoChattingBtn" class="text-center btn btn-lg btn-success") Do Video Calls now
+
+            div(class="my-3")
+                p(class="m-0")
+                    small Share this 
+                    a(href=chatLink target="_blank")
+                        small link
+                    small  on all of your social media now, and then wait here while your fans start queuing up. You might find this 
+                    a(href="https://www.huffingtonpost.com/2015/02/25/get-instagram-likes_n_6751614.html" target="_blank")
+                        small link
+                    small  useful.
+
+            div(class="my-3")
+                p(class="m-0")
+                    small The time length of each video call will be 1 second. The name of the person you will do a video call with will appear during the video call. <b>Say "Hi [Name]!"</b>. If you cannot see the person during a video call, still say "Hi [Name]!" because they can still see and hear you. When you press the green "Do Video Calls now" button, up to 10 video calls will happen automatically, one after another. Please use headphones to prevent echoing during video calls. Please take measures to prevent causing harm to your health.
+
+            div(class="my-3")
+                p(class="m-0")
+                    small Access information about your earnings <a href="https://dashboard.stripe.com" target="_blank">here</a>.
+                    small  The following <a href="/l/links/terms-of-use" target="_blank">Terms of Use</a>, <a href="/l/links/privacy-policy" target="_blank">Privacy Policy</a> and <a href="/l/links/vip-terms-and-conditions" target="_blank">Terms & Conditions</a> apply to you.
+                    small  Find out what personal data we store about you <a href="/l/links/data" target="_blank">here</a> (subject access request).
+
+        footer(class="dashboard-footer fixed-bottom bg-light text-secondary")
+            div(class="copyright") Copyright ©. All rights reserved.
+
+    include ../includes/chat-room.pug
+
+    include ../includes/media-blocked-modal.pug
+    include ../includes/message-modal.pug
+    include ../includes/media-confirm-modal.pug
+    include ../includes/error-modal.pug
+    include ../includes/orientation-alert.pug
+
+append scripts
+    script(src="/socket.io/socket.io.js")
+    script(src="/js/pico.min.js")
+    script(src="/js/common.js")
+    script(src="/js/vip-dashboard-bundle.js")

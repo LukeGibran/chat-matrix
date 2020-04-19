@@ -1,0 +1,17 @@
+#dashboard {
+    overflow: auto!important;
+}
+
+.dashboard-title {
+    font-size: 1.25em;
+}
+
+.dashboard-footer {
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.dashboard-footer .copyright {
+    font-size: 0.75em;
+    text-align: center;
+}

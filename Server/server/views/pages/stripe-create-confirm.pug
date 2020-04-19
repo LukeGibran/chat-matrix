@@ -1,0 +1,37 @@
+extends layout
+
+block content
+    div(class="d-flex justify-content-center align-items-lg-center h-100")
+        div(class="card mb-5")
+            div(class="card-body")
+                p(class="card-text text-center") Do you agree with all of the information below?
+
+                div(class="d-flex justify-content-center mb-3")
+                    button(class="btn btn-success mr-3") Yes
+                    button(class="btn btn-danger") No
+
+                p(class="card-text text-center text-primary d-none") Please wait a few moments...
+
+                p(class="card-text text-center") To receive payments, you need to create an account with Stripe (https://stripe.com). Stripe is a very reputable company (which is backed by three PayPal co-founders) that operates side-by-side with The Chat Matrix so that you can receive payments.
+
+                p(class="card-text text-center") You will now be taken to create an account with Stripe.
+                
+                p(class="card-text text-center") When you create an account with Stripe, you will be asked to give a "business address" and phone number. Please do not give your home/personal address as your "business address", and please do not give your personal phone number. These two pieces of information will be accessible to the people that you will do video calls with! Our guess is that Stripe will not ask you to verify the "business address" and phone number you give to them.
+
+                p(class="card-text text-center") If you are unsure about anything when you are creating an account with Stripe, you can contact them at support@stripe.com.
+
+append scripts
+    script.
+        $('.btn-success').on('click', function() {
+            $('.text-primary').removeClass('d-none');
+
+            $('.btn-success').attr('disabled', true);
+            $('.btn-danger').attr('disabled', true);
+
+            window.location.href = '/s/stripe/oauth';
+        });
+
+        $('.btn-danger').on('click', function() {
+            window.open('https://instagram.com/accounts/logout/', "_blank");
+            window.location.href = '/v/vip/logout';
+        });

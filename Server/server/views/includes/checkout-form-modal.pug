@@ -1,0 +1,32 @@
+div(id="checkoutFormModal" class="modal fade" tabindex="-1" role="dialog")
+    div(class="modal-dialog modal-dialog-centered modal-sm" role="document")
+        div(class="modal-content")
+
+            div(class="modal-header")
+                p(class="lead modal-title")
+                    strong Pay with Card
+                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                    span(aria-hidden="true") &times;
+
+            div(class="modal-body")
+                form(id="checkoutForm")
+                    div(class="input-group mb-3")
+                        div(class="input-group-prepend")
+                            div(class="input-group-text")
+                                span(class="oi oi-credit-card" title="Card Number")
+                        span(id="cardNumber" class="form-control")
+                    
+                    div(class="form-row mb-3")
+                        div(class="col-sm-6 input-group")
+                            div(class="input-group-prepend")
+                                div(class="input-group-text")
+                                    span(class="oi oi-calendar" title="Card Expiration")
+                            span(id="cardExpiry" class="form-control")
+                        
+                        div(class="col-sm-6 input-group")
+                            div(class="input-group-prepend")
+                                div(class="input-group-text")
+                                    span(class="oi oi-lock-locked pr-1" title="CVC")
+                            span(id="cardCvc" class="form-control")
+
+                button(id="submitBtn" class="btn btn-primary font-weight-bold col-sm-12 mt-3") Pay

@@ -1,0 +1,15 @@
+div(class="modal fade" id="chatRequestSentModal" tabindex="-1" role="dialog")
+    div(class="modal-dialog" role="document")
+        div(class="modal-content")
+
+            div(class="modal-header") 
+                p(class="lead modal-title")
+                    strong Video Call request sent. Waiting for a response.
+                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                    span(aria-hidden="true") &times;
+
+            div(class="modal-body")
+                div(class="d-flex justify-content-center mb-3")
+                    button(type="button" class="btn btn-danger" data-dismiss="modal") Cancel Request
+
+                img(id="profileImg" class="img-fluid w-100" src="/images/box.jpg" alt="")

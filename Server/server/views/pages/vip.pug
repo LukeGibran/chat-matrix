@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    div(id="vip" class="container-fluid h-100")
+        div(class="d-flex flex-column align-items-center justify-content-center h-100")
+
+            div(class="border text-center px-4 px-md-5 py-3 py-md-4")
+                p(class="lead mb-0")
+                    strong #{fullName} </br>
+                p(class="lead mb-0")
+                    strong (@#{username}) </br>
+                p(class="lead") #{followedBy} Instagram followers
+
+                div
+                    img(id="avatarImg" width="150" height="150" src=profilePicture class="")
+
+                div(id="online" class="pb-2 pb-md-3 d-none")
+                    p(class="lead text-success")
+                        strong ONLINE
+                    button(id="videoChatBtn" class="btn btn-lg btn-success") Video call this VIP
+
+                div(id="offline" class="pb-2 pb-md-3 d-none")
+                    p(class="lead text-danger")
+                        strong OFFLINE
+                
+                p(id="loadingText" class="lead text-info")
+                        strong ...
+
+                button(id="viewVipsBtn" class="btn btn-primary") View other VIPs
+
+append scripts
+    script(src="/socket.io/socket.io.js")
+    script(src="/js/common.js")
+    script(src="/js/vip-bundle.js")

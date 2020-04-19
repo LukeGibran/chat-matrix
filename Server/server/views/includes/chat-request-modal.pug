@@ -1,0 +1,16 @@
+div(class="modal fade" id="chatRequestModal" tabindex="-1" role="dialog")
+    div(class="modal-dialog" role="document")
+        div(class="modal-content")
+
+            div(class="modal-header")
+                p(class="lead modal-title")
+                    strong The person below is requesting a Video Call with you.
+                button(type="button" class="close" data-dismiss="modal" aria-label="Close")
+                    span(aria-hidden="true") &times;
+
+            div(class="modal-body")
+                div(class="d-flex justify-content-center mb-3")
+                    button(id="acceptBtn" type="button" class="btn btn-primary mr-3") Accept
+                    button(type="button" class="btn btn-danger" data-dismiss="modal") Deny
+
+                img(id="profileImg" class="img-fluid w-100" src="/images/box.jpg" alt="")

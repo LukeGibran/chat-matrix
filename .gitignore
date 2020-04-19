@@ -1,0 +1,21 @@
+# Server
+#Server/.env
+Server/node_modules
+# certs
+Server/uploads/profile/*
+Server/!uploads/profile/.gitkeep
+
+# Client
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+Client/node_modules
+Client/.pnp
+Client.pnp.js
+
+# build files
+Client/dist
+
+# misc
+Client/.DS_Store
+Client/npm-debug.log*

@@ -1,0 +1,51 @@
+extends ../layout
+
+block content
+    div(class="px-3 px-md-5 py-3")
+        form(action="/l/links/contact" method="post" class="pt-3")
+            div(class="form-group col-md-6 offset-md-3")
+                label(for="name")
+                    strong Your Name
+                input(type="text" class="form-control" id="name" name="name" placeholder="Name" autocomplete="name")
+            
+            div(class="form-group col-md-6 offset-md-3")
+                label(for="email")
+                    strong Email
+                input(type="email" class="form-control" id="email" name="email" placeholder="Email" autocomplete="email")
+
+            div(class="form-group col-md-6 offset-md-3")
+                label(for="subject")
+                    strong Subject
+                select(id="subject" name="subject" class="form-control")
+                    option(selected) Comments and suggestions
+                    option Report a bug
+                    option Business enquiries
+
+            div(class="form-group col-md-6 offset-md-3")
+                label(for="message")
+                    strong Message
+                textarea(id="message" name="message" class="form-control" placeholder="Message" style="height:10em;")
+
+            div(class="form-group col-md-6 offset-md-3")
+                button(class="btn btn-primary" type="submit") Send Message
+
+        div(class="contact-status d-flex flex-column justify-content-center align-items-start pl-1 pt-1")
+
+            if errors
+                each val in errors
+                    div(class="alert alert-danger alert-dismissible fade show mb-1" role="alert")
+                        strong=val.msg
+                        button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                            spn(aria-hidden="true") &times;
+
+            if error
+                div(class="alert alert-danger alert-dismissible fade show mb-1" role="alert")
+                    strong=error.message
+                    button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                        spn(aria-hidden="true") &times;
+
+            if message
+                div(class="alert alert-success alert-dismissible fade show mb-1" role="alert")
+                    strong=message
+                    button(type="button" class="close" data-dismiss="alert" aria-label="Close")
+                        spn(aria-hidden="true") &times;

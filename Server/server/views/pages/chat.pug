@@ -1,0 +1,19 @@
+extends layout
+
+append head
+    link(rel="stylesheet" href="/styles/chat.css")
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css")
+
+block content
+    div(id="root" class="container-fluid w-100 h-100")
+
+append scripts
+    //- script(src="https://webrtc.github.io/adapter/adapter-latest.js")
+    //- script(src="https://js.stripe.com/v3/")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.min.js")
+    script(src="/socket.io/socket.io.js")
+    script(src="/js/pico.min.js")
+    script(src="/js/hammer.min.js")
+    
+    script(src="/js/common.js")
+    script(src="/js/bundle.js")

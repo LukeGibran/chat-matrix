@@ -1,0 +1,18 @@
+div(id="userGrid" class="container-fluid w-100 h-100")
+
+    div(id="gridParent" class="position-relative w-100 h-100")
+
+    button(id="upBtn" class="btn btn-sm btn-primary text-center position-absolute invisible")
+        span(class="oi oi-chevron-top")
+    
+    button(id="downBtn" class="btn btn-sm btn-primary text-center position-absolute invisible")
+        span(class="oi oi-chevron-bottom")
+
+    include chat-request-sent-modal.pug
+    include chat-request-modal.pug
+    include vip-chat-confirm-modal.pug
+    include vip-disconnected-modal.pug
+    include name-form-modal.pug
+    include vip-chat-again-modal.pug
+    include checkout-form-modal.pug
+    include error-modal.pug

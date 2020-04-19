@@ -1,0 +1,24 @@
+div(id="vipChatConfirmModal" class="modal fade" tabindex="-1" role="dialog")
+    div(class="modal-dialog modal-dialog-centered" role="document")
+        div(class="modal-content")
+            
+            div(class="modal-header")
+                p(class="lead modal-title")
+                    strong VIP Video Greeting
+                button(type="button" class="close" data-dismiss="modal")
+                    span(aria-hidden="true") &times;
+
+            div(class="modal-body")
+                div(class="text-center")
+                    p(class="mb-2") You are requesting a very quick greeting (via a live 1-to-1 video call) with the following VIP (Instagram account holder):
+
+                    p(class="mb-2")
+                        a(id="instagramLink" href="#" target="_blank")
+                            strong(id="instagramLinkDisplay")
+
+                    p(class="mb-2") Do you completely understand and completely agree with all of the content in the link <a href="/l/links/vip-video-call-terms-and-conditions" target="_blank">here</a>?
+
+            div(class="modal-footer")
+                div(class="d-flex justify-content-center w-100")
+                    button(id="yesBtn" type="button" class="btn btn-lg btn-success mr-3") Yes
+                    button(type="button" class="btn btn-lg btn-danger" data-dismiss="modal") No

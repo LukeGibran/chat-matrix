@@ -1,0 +1,92 @@
+/*
+ * Base structure
+ */
+body {
+    background-color: #049afc;
+}
+
+a {
+    outline: none!important;
+}
+
+a:focus {
+    outline: none!important;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+
+/*
+ * Cover
+ */
+#home {
+    font-family: 'Gotham Rounded Book';
+    font-weight: normal;
+    font-style: normal;
+}
+
+#home .btn-lg {
+    width: 220px;
+    height: 80px;
+    font-size: 32px;
+}
+
+.title {
+    font-family: 'Gotham Rounded'!important;
+    font-weight: bold;
+    font-style: normal;
+    white-space: nowrap;
+    font-size: 5.5vw;
+    letter-spacing: 0.5em;
+    padding-left: 0.5em;/* remove letter spacing on the last letter */
+}
+
+
+/*
+ * Contents
+ */
+
+ .btn-vip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+}
+
+
+/*
+ * @media
+ */
+/* screen width >= 1024px */
+@media screen and (min-width: 1024px) {
+    .title {
+        font-size: 3rem!important;
+        letter-spacing: 0.65em!important;
+        padding-left: 0.65em!important;
+    }
+}
+
+/* screen width <= 414px */
+@media screen and (max-width: 414px) {
+    .lead {
+        font-size: 1em!important;
+    }
+
+    small {
+        font-size: 0.64em!important;
+    }
+}
+
+/* screen width <= 320px */
+@media screen and (max-width: 320px) {
+    .lead {
+        font-size: 0.8em!important;
+    }
+
+    small {
+        font-size: 0.512em!important;
+    }
+}
