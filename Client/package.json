@@ -4,9 +4,9 @@
   "private": true,
   "homepage": "/abc/",
   "scripts": {
-    "start": "webpack-dev-server --mode development",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
     "watch": "webpack --watch",
-    "build": "webpack --mode=production",
+    "build": "webpack --config webpack.prod.js",
     "dev": "webpack"
   },
   "dependencies": {
@@ -48,6 +48,7 @@
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
     "eslint-config-react": "^1.1.7",
@@ -58,7 +59,8 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.41.6",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.10.3"
+    "webpack-dev-server": "^3.10.3",
+    "webpack-merge": "^4.2.2"
   },
   "main": "webpack.config.js",
   "repository": {
