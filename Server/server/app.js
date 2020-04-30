@@ -27,7 +27,7 @@ var client = require("./routes/client");
 var app = express();
 
 // Prevent client side cache
-app.use(nocache());
+//app.use(nocache());
 
 // session store
 var sessionStore = new MySQLStore({}, db.getConnection());
