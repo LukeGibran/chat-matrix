@@ -123,8 +123,7 @@ class NameFormModal extends Component {
                         ref={this.modalDialog}
                         className="px-1"
                         style={this._modalStyle}>
-                        <Modal.Header closeButton onHide={onCancel}>
-                        </Modal.Header>
+                        <Modal.Header closeButton onHide={onCancel} />
                         <Modal.Body className="text-center">
                             <p className="lead">{message}</p>
 
