@@ -76,13 +76,13 @@ app.use((req, res, next) => {
 });
 
 // redirect HTTP to HTTPS
-app.use(function (req, res, next) {
-  if (req.secure) {
-    next();
-  } else {
-    res.redirect("https://" + req.headers.host + req.url);
-  }
-});
+//app.use(function (req, res, next) {
+// if (req.secure) {
+//   next();
+// } else {
+//   res.redirect("https://" + req.headers.host + req.url);
+// }
+//});
 
 app.use("/c/chat", chat);
 app.use("/a/auth", auth);
