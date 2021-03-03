@@ -37,7 +37,7 @@
     "nude": "0.0.1",
     "passport": "^0.4.0",
     "passport-twitter": "1.0.2",
-    "pug": "^2.0.3",
+    "pug": "^3.0.1",
     "rand-token": "^0.4.0",
     "react-icons": "^3.9.0",
     "request": "^2.88.0",
